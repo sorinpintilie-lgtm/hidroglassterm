@@ -240,9 +240,7 @@ function initProductSwitcher() {
       { img: 'images/usi/poza1.jpeg', alt: 'Ușă PVC de intrare', title: 'Uși PVC', focusClass: 'focus-top' },
       { img: 'images/usi/poza2.jpeg', alt: 'Ușă PVC montată', title: 'Uși de intrare', focusClass: 'focus-top' },
       { img: 'images/usi/poza3.jpeg', alt: 'Lucrare ușă PVC finalizată', title: 'Montaj uși PVC', focusClass: 'focus-top' },
-      { img: 'images/usi/poza4.jpeg', alt: 'Detaliu lucrare ușă PVC', title: 'Finisaje uși PVC', focusClass: 'focus-top' },
-      { img: 'images/usi/poza5.jpeg', alt: 'Ușă PVC modernă', title: 'Model modern', focusClass: 'focus-top' },
-      { img: 'images/usi/poza6.jpeg', alt: 'Ușă PVC detaliu', title: 'Detalii tehnice', focusClass: 'focus-top' }
+      { img: 'images/usi/poza4.jpeg', alt: 'Detaliu lucrare ușă PVC', title: 'Finisaje uși PVC', focusClass: 'focus-top' }
     ],
     'usi-glisante': [
       { img: 'images/usi-glis3.jpeg', alt: 'Sistem glisant cu oglindă', title: 'Glisantă pentru terasă' },
