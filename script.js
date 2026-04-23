@@ -237,16 +237,24 @@ function initProductSwitcher() {
       { img: 'images/WhatsApp Image 2026-04-09 at 09.35.16.jpeg', alt: 'Detaliu tâmplărie PVC', title: 'Soluții PVC' }
     ],
     'usi-pvc': [
-      { img: 'images/WhatsApp Image 2026-04-07 at 10.18.30 (10).jpeg', alt: 'Ușă PVC de intrare', title: 'Uși PVC' },
-      { img: 'images/WhatsApp Image 2026-04-07 at 10.18.30 (6).jpeg', alt: 'Ușă PVC montată', title: 'Uși de intrare' },
-      { img: 'images/WhatsApp Image 2026-04-07 at 10.18.31 (2).jpeg', alt: 'Lucrare ușă PVC finalizată', title: 'Montaj uși PVC' },
-      { img: 'images/WhatsApp Image 2026-04-09 at 09.35.16 (3).jpeg', alt: 'Detaliu lucrare ușă PVC', title: 'Finisaje uși PVC' }
+      { img: 'images/usi/poza1.jpeg', alt: 'Ușă PVC de intrare', title: 'Uși PVC', focusClass: 'focus-top' },
+      { img: 'images/usi/poza2.jpeg', alt: 'Ușă PVC montată', title: 'Uși de intrare', focusClass: 'focus-top' },
+      { img: 'images/usi/poza3.jpeg', alt: 'Lucrare ușă PVC finalizată', title: 'Montaj uși PVC', focusClass: 'focus-top' },
+      { img: 'images/usi/poza4.jpeg', alt: 'Detaliu lucrare ușă PVC', title: 'Finisaje uși PVC', focusClass: 'focus-top' },
+      { img: 'images/usi/poza5.jpeg', alt: 'Ușă PVC modernă', title: 'Model modern', focusClass: 'focus-top' },
+      { img: 'images/usi/poza6.jpeg', alt: 'Ușă PVC detaliu', title: 'Detalii tehnice', focusClass: 'focus-top' }
     ],
     'usi-glisante': [
       { img: 'images/usi-glis3.jpeg', alt: 'Sistem glisant cu oglindă', title: 'Glisantă pentru terasă' },
       { img: 'images/usi-glis2.jpeg', alt: 'Glisantă de interior', title: 'Glisantă de interior' },
       { img: 'images/usi-glis1.jpeg', alt: 'Glisantă pentru terasă', title: 'Sistem glisant cu oglindă' },
       { img: 'images/usi-glis4.jpeg', alt: 'Glisantă pentru exterior', title: 'Glisantă pentru exterior' }
+    ],
+    'plase-tantari': [
+      { img: 'images/plase-tantari/plasa-tantari-1.jpeg', alt: 'Plasă de tantari', title: 'Plase de tantari' },
+      { img: 'images/plase-tantari/plasa-tantari-2.jpeg', alt: 'Plasă de tantari rulou', title: 'Sistem rulou' },
+      { img: 'images/plase-tantari/plasa-tantari-3.jpeg', alt: 'Plasă de tantari plisată', title: 'Sistem plisat' },
+      { img: 'images/plase-tantari/plasa-tantari-4.jpeg', alt: 'Plasă de tantari pe rulor', title: 'Plase pe rulor' }
     ]
   };
 
@@ -291,23 +299,176 @@ function initSliders() {
   bindDots(document.querySelector('.gallery-grid'), document.getElementById('gallery-dots'), '.gallery-item', 'gallery-dot', 'Imagine');
   bindDots(document.querySelector('.services-grid'), document.getElementById('services-dots'), '.service-card', 'services-dot', 'Serviciu');
 
-  const showcaseFerestre = document.getElementById('showcase-dots-ferestre');
-  if (showcaseFerestre) bindDots(showcaseFerestre.previousElementSibling, showcaseFerestre, '.product-item', 'category-dot', 'Produs');
-
-  const galleryFerestre = document.getElementById('gallery-dots-ferestre');
-  if (galleryFerestre) bindDots(galleryFerestre.previousElementSibling, galleryFerestre, '.product-item', 'category-gallery-dot', 'Imagine');
-
-  const showcaseUsi = document.getElementById('showcase-dots-usi-pvc');
-  if (showcaseUsi) bindDots(showcaseUsi.previousElementSibling, showcaseUsi, '.product-item', 'category-dot', 'Produs');
+  const galleryFerestre = document.getElementById('gallery-dots-ferestre-pvc');
+  if (galleryFerestre) bindDots(galleryFerestre.previousElementSibling, galleryFerestre, '.category-masonry-item', 'category-gallery-dot', 'Imagine');
 
   const galleryUsi = document.getElementById('gallery-dots-usi-pvc');
-  if (galleryUsi) bindDots(galleryUsi.previousElementSibling, galleryUsi, '.product-item', 'category-gallery-dot', 'Imagine');
-
-  const showcaseGlisante = document.getElementById('showcase-dots-usi-glisante');
-  if (showcaseGlisante) bindDots(showcaseGlisante.previousElementSibling, showcaseGlisante, '.product-item', 'category-dot', 'Produs');
+  if (galleryUsi) bindDots(galleryUsi.previousElementSibling, galleryUsi, '.category-masonry-item', 'category-gallery-dot', 'Imagine');
 
   const galleryGlisante = document.getElementById('gallery-dots-usi-glisante');
-  if (galleryGlisante) bindDots(galleryGlisante.previousElementSibling, galleryGlisante, '.product-item', 'category-gallery-dot', 'Imagine');
+  if (galleryGlisante) bindDots(galleryGlisante.previousElementSibling, galleryGlisante, '.category-masonry-item', 'category-gallery-dot', 'Imagine');
+
+  const galleryPlase = document.getElementById('gallery-dots-plase-tantari');
+  if (galleryPlase) bindDots(galleryPlase.previousElementSibling, galleryPlase, '.category-masonry-item', 'category-gallery-dot', 'Imagine');
+}
+
+function initGalleryLightbox() {
+
+  let lightbox = document.querySelector('.gallery-lightbox');
+
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.className = 'gallery-lightbox';
+    lightbox.innerHTML = `
+      <button class="gallery-lightbox__close" aria-label="Închide">×</button>
+      <div class="gallery-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Imagine mărită">
+        <button class="gallery-lightbox__prev" aria-label="Imaginea anterioară">‹</button>
+        <img class="gallery-lightbox__img" src="" alt="" />
+        <button class="gallery-lightbox__next" aria-label="Imaginea următoare">›</button>
+        <div class="gallery-lightbox__caption"></div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+  }
+
+  const triggers = Array.from(document.querySelectorAll('.category-masonry-item'));
+  if (!triggers.length) return;
+
+  const imgEl = lightbox.querySelector('.gallery-lightbox__img');
+  const captionEl = lightbox.querySelector('.gallery-lightbox__caption');
+  const closeBtn = lightbox.querySelector('.gallery-lightbox__close');
+  const prevBtn = lightbox.querySelector('.gallery-lightbox__prev');
+  const nextBtn = lightbox.querySelector('.gallery-lightbox__next');
+
+  let currentIndex = 0;
+
+  const preventScroll = (e) => e.preventDefault();
+
+  const openAt = (index) => {
+    const item = triggers[index];
+    if (!item) return;
+
+    currentIndex = index;
+    imgEl.src = item.getAttribute('href') || '';
+    imgEl.alt = item.dataset.caption || item.querySelector('img')?.alt || '';
+    captionEl.textContent = item.dataset.caption || '';
+    lightbox.classList.add('open');
+    document.body.classList.add('menu-open');
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('wheel', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+  };
+
+  const close = () => {
+    const currentItem = triggers[currentIndex];
+    const container = currentItem?.closest('.category-masonry');
+    if (container) {
+      const firstItem = container.querySelector('.category-masonry-item');
+      const step = firstItem ? firstItem.getBoundingClientRect().width + (parseFloat(getComputedStyle(container).gap) || 0) : container.clientWidth;
+      container.scrollLeft = currentIndex * step;
+    }
+    lightbox.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow = '';
+    window.removeEventListener('wheel', preventScroll, { passive: false });
+    window.removeEventListener('touchmove', preventScroll, { passive: false });
+  };
+
+  const showPrev = () => {
+    currentIndex = (currentIndex - 1 + triggers.length) % triggers.length;
+    openAt(currentIndex);
+  };
+
+  const showNext = () => {
+    currentIndex = (currentIndex + 1) % triggers.length;
+    openAt(currentIndex);
+  };
+
+  triggers.forEach((item, index) => {
+    if (item.dataset.lightboxBound === 'true') return;
+    item.dataset.lightboxBound = 'true';
+
+    item.addEventListener('click', (event) => {
+      event.preventDefault();
+      openAt(index);
+    });
+  });
+
+  if (!lightbox.dataset.bound) {
+    lightbox.dataset.bound = 'true';
+
+    closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (event.key === 'Escape') close();
+      if (event.key === 'ArrowLeft') showPrev();
+      if (event.key === 'ArrowRight') showNext();
+    });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    lightbox.addEventListener('touchstart', (event) => {
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', (event) => {
+      const touchEndX = event.changedTouches[0].clientX;
+      const touchEndY = event.changedTouches[0].clientY;
+      const deltaX = touchStartX - touchEndX;
+      const deltaY = touchStartY - touchEndY;
+      const absDeltaY = Math.abs(deltaY);
+      if (absDeltaY < 50 && Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          showNext();
+        } else {
+          showPrev();
+        }
+      } else if (deltaY > 50 && Math.abs(deltaX) < 50) {
+        close();
+      }
+    }, { passive: true });
+  }
+}
+
+function initCategoryGalleryDots() {
+  bindDots(
+    document.getElementById('gallery-ferestre-pvc'),
+    document.getElementById('gallery-dots-ferestre-pvc'),
+    '.category-masonry-item',
+    'category-dot',
+    'Imagine'
+  );
+
+  bindDots(
+    document.getElementById('gallery-usi-pvc'),
+    document.getElementById('gallery-dots-usi-pvc'),
+    '.category-masonry-item',
+    'category-dot',
+    'Imagine'
+  );
+
+  bindDots(
+    document.getElementById('gallery-usi-glisante'),
+    document.getElementById('gallery-dots-usi-glisante'),
+    '.category-masonry-item',
+    'category-dot',
+    'Imagine'
+  );
+
+  bindDots(
+    document.getElementById('gallery-plase-tantari'),
+    document.getElementById('gallery-dots-plase-tantari'),
+    '.category-masonry-item',
+    'category-dot',
+    'Imagine'
+  );
 }
 
 function initSite() {
@@ -317,6 +478,8 @@ function initSite() {
   initProductSwitcher();
   initSliders();
   setHeaderState();
+  initGalleryLightbox();
+  initCategoryGalleryDots();
 }
 
 document.addEventListener('DOMContentLoaded', initSite);
