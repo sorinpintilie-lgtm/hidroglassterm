@@ -4003,3 +4003,19 @@ html, body {
     transform: scale(1.35);
   }
 }
+
+.cta-section {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.cta-section .featured-banner {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .cta-section {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}
