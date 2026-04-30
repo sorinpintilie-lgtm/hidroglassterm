@@ -3,7 +3,7 @@ $StaticDir = ".";
 
 $Listener = New-Object System.Net.HttpListener;
 
-$Listener.Prefixes.Add("http://*:$Port/");
+$Listener.Prefixes.Add("http://localhost:$Port/");
 
 $Listener.Start();
 
