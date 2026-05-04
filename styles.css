@@ -2092,8 +2092,8 @@ html, body {
   }
 }
 
-/* Header compact earlier */
-@media (max-width: 1399px) {
+/* Header compact on phones */
+@media (max-width: 767px) {
   .header-main {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) auto !important;
