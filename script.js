@@ -139,18 +139,38 @@ function initReveal() {
   });
 }
 
+function showFormPopup(message, type = 'info') {
+  const popup = document.getElementById('form-popup');
+  const messageEl = popup.querySelector('.form-popup-message');
+  const closeBtn = popup.querySelector('.form-popup-close');
+
+  if (!popup || !messageEl || !closeBtn) return;
+
+  messageEl.textContent = message;
+  popup.className = `form-popup form-popup--${type}`;
+  popup.style.display = 'flex';
+
+  const hidePopup = () => {
+    popup.style.display = 'none';
+  };
+
+  closeBtn.onclick = hidePopup;
+
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) hidePopup();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popup.style.display !== 'none') hidePopup();
+  }, { once: true });
+
+  setTimeout(hidePopup, 5000);
+}
+
 function initLeadForms() {
   document.querySelectorAll('.lead-form').forEach((leadForm) => {
     if (leadForm.dataset.bound === 'true') return;
     leadForm.dataset.bound = 'true';
-
-    let formStatus = leadForm.parentElement?.querySelector('.form-status');
-    if (!formStatus) {
-      formStatus = document.createElement('p');
-      formStatus.className = 'form-status';
-      formStatus.setAttribute('aria-live', 'polite');
-      leadForm.insertAdjacentElement('afterend', formStatus);
-    }
 
     leadForm.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -166,19 +186,15 @@ function initLeadForms() {
       const submitButton = leadForm.querySelector('button[type="submit"]');
 
       if (!name || !phone || !city || !service) {
-        formStatus.textContent = 'Completează toate câmpurile pentru a trimite cererea.';
-        formStatus.style.color = '#ffd4d4';
+        showFormPopup('Completează toate câmpurile pentru a trimite cererea.', 'error');
         return;
       }
 
       if (!phoneLooksValid) {
-        formStatus.textContent = 'Numărul de telefon introdus nu este valid.';
-        formStatus.style.color = '#ffd4d4';
+        showFormPopup('Numărul de telefon introdus nu este valid.', 'error');
         return;
       }
 
-      formStatus.textContent = 'Se trimite mesajul...';
-      formStatus.style.color = '#ffffff';
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.dataset.originalText = submitButton.textContent;
@@ -208,12 +224,10 @@ function initLeadForms() {
           throw new Error(result.error || 'Mesajul nu a putut fi trimis.');
         }
 
-        formStatus.textContent = 'Mesajul a fost trimis. Revenim în cel mai scurt timp.';
-        formStatus.style.color = '#caf8da';
+        showFormPopup('Mesajul a fost trimis. Revenim în cel mai scurt timp.', 'success');
         leadForm.reset();
       } catch (error) {
-        formStatus.textContent = error.message || 'A apărut o eroare. Te rugăm să ne contactezi telefonic sau pe WhatsApp.';
-        formStatus.style.color = '#ffd4d4';
+        showFormPopup(error.message || 'A apărut o eroare. Te rugăm să ne contactezi telefonic sau pe WhatsApp.', 'error');
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
