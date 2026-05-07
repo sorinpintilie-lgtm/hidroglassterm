@@ -152,7 +152,7 @@ function initLeadForms() {
       leadForm.insertAdjacentElement('afterend', formStatus);
     }
 
-    leadForm.addEventListener('submit', (event) => {
+    leadForm.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       const formData = new FormData(leadForm);
@@ -160,7 +160,10 @@ function initLeadForms() {
       const phone = String(formData.get('phone') || '').trim();
       const city = String(formData.get('city') || '').trim();
       const service = String(formData.get('service') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+      const website = String(formData.get('website') || '').trim();
       const phoneLooksValid = /^[0-9+\s()-]{8,}$/.test(phone);
+      const submitButton = leadForm.querySelector('button[type="submit"]');
 
       if (!name || !phone || !city || !service) {
         formStatus.textContent = 'Completează toate câmpurile pentru a trimite cererea.';
@@ -174,9 +177,49 @@ function initLeadForms() {
         return;
       }
 
-      formStatus.textContent = 'Mesajul a fost trimis. Revenim în cel mai scurt timp.';
-      formStatus.style.color = '#caf8da';
-      leadForm.reset();
+      formStatus.textContent = 'Se trimite mesajul...';
+      formStatus.style.color = '#ffffff';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.dataset.originalText = submitButton.textContent;
+        submitButton.textContent = 'Se trimite...';
+      }
+
+      try {
+        const response = await fetch('/.netlify/functions/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name,
+            phone,
+            city,
+            service,
+            message,
+            website,
+            page: window.location.href
+          })
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Mesajul nu a putut fi trimis.');
+        }
+
+        formStatus.textContent = 'Mesajul a fost trimis. Revenim în cel mai scurt timp.';
+        formStatus.style.color = '#caf8da';
+        leadForm.reset();
+      } catch (error) {
+        formStatus.textContent = error.message || 'A apărut o eroare. Te rugăm să ne contactezi telefonic sau pe WhatsApp.';
+        formStatus.style.color = '#ffd4d4';
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = submitButton.dataset.originalText || 'Trimite';
+        }
+      }
     });
   });
 }
