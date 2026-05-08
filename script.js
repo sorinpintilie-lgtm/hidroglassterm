@@ -575,7 +575,11 @@ function loadPortfolioGallery() {
     'images/usi/usi-15.jpeg',
     'images/usi/usi-16.jpeg',
     'images/usi/usi-17.jpeg',
-    'images/usi/usi-18.jpeg'
+    'images/usi/usi-18.jpeg',
+    'images/plase-tantari/plase-tantari-1.jpeg',
+    'images/plase-tantari/plase-tantari-2.jpeg',
+    'images/plase-tantari/plase-tantari-3.jpeg',
+    'images/plase-tantari/plase-tantari-4.jpeg'
   ];
 
   galleryGrid.innerHTML = images.map(img => `<article class="gallery-item"><img src="${img}" alt="Lucrare tâmplărie PVC Constanța" /></article>`).join('');
