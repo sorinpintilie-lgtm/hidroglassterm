@@ -526,12 +526,68 @@ function initCategoryGalleryDots() {
   );
 }
 
+function loadPortfolioGallery() {
+  const galleryGrid = document.querySelector('.gallery-grid');
+  if (!galleryGrid) return;
+
+  const images = [
+    'images/ferestre/profil.png',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.30 (1).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.30 (2).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.30 (5).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.30 (8).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.31 (11).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.31 (12).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.31.jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.32 (2).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.32 (3).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.32 (5).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.32 (6).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-07 at 10.18.32 (8).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-09 at 09.35.16 (4).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-09 at 09.35.16.jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-09 at 09.35.17 (12).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-09 at 09.35.18 (1).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-09 at 09.35.18 (3).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-09 at 09.35.18 (4).jpeg',
+    'images/ferestre/WhatsApp Image 2026-04-09 at 09.35.18 (6).jpeg',
+    'images/ferestre/WhatsApp Image 2026-05-07 at 21.08.56 (2).jpeg',
+    'images/usi/poza1.jpeg',
+    'images/usi/poza2.jpeg',
+    'images/usi/poza3.jpeg',
+    'images/usi/poza4.jpeg',
+    'images/usi/poza5.jpeg',
+    'images/usi/poza6.jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.30 (10).jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.30 (11).jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.30 (12).jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.30 (6).jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.31 (10).jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.31 (13).jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.31 (2).jpeg',
+    'images/usi/WhatsApp Image 2026-04-07 at 10.18.31 (3).jpeg',
+    'images/usi/WhatsApp Image 2026-04-09 at 09.35.16 (3).jpeg',
+    'images/usi/WhatsApp Image 2026-05-07 at 21.08.56 (1).jpeg',
+    'images/usi/WhatsApp Image 2026-05-07 at 21.08.56.jpeg',
+    'images/usi/WhatsApp-Image-2022-03-30-at-20.28.12-576x1024.jpeg',
+    'images/usi/WhatsApp-Image-2022-03-30-at-20.28.17-3-768x1024.jpeg',
+    'images/usi/WhatsApp-Image-2022-03-30-at-20.28.17-4.jpeg',
+    'images/usi/WhatsApp-Image-2022-03-30-at-20.28.18-4-768x1024.jpeg',
+    'images/usi/WhatsApp-Image-2022-03-30-at-20.29.19-768x1024.jpeg',
+    'images/usi/WhatsApp-Image-2022-03-30-at-20.29.20-1-768x1024.jpeg',
+    'images/usi/WhatsApp-Image-2022-03-30-at-20.29.22-1.jpeg'
+  ];
+
+  galleryGrid.innerHTML = images.map(img => `<article class="gallery-item"><img src="${img}" alt="Lucrare tâmplărie PVC Constanța" /></article>`).join('');
+}
+
 function initSite() {
   initHeaderMenu();
   initReveal();
   initLeadForms();
   initProductSwitcher();
   initSliders();
+  loadPortfolioGallery();
   setHeaderState();
   initGalleryLightbox();
   initCategoryGalleryDots();
