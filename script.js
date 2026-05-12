@@ -294,10 +294,10 @@ function initProductSwitcher() {
       { img: 'images/WhatsApp Image 2026-04-09 at 09.35.16.jpeg', alt: 'Detaliu tâmplărie PVC', title: 'Soluții PVC' }
     ],
     'usi-pvc': [
-      { img: 'images/usi/poza1.jpeg', alt: 'Ușă PVC de intrare', title: 'Uși PVC', focusClass: 'focus-top' },
-      { img: 'images/usi/poza2.jpeg', alt: 'Ușă PVC montată', title: 'Uși de intrare', focusClass: 'focus-top' },
-      { img: 'images/usi/poza3.jpeg', alt: 'Lucrare ușă PVC finalizată', title: 'Montaj uși PVC', focusClass: 'focus-top' },
-      { img: 'images/usi/poza4.jpeg', alt: 'Detaliu lucrare ușă PVC', title: 'Finisaje uși PVC', focusClass: 'focus-top' }
+      { img: 'images/usi/usi-1.jpeg', alt: 'Ușă PVC de intrare', title: 'Uși PVC', focusClass: 'focus-top' },
+      { img: 'images/usi/usi-2.jpeg', alt: 'Ușă PVC montată', title: 'Uși de intrare', focusClass: 'focus-top' },
+      { img: 'images/usi/usi-3.jpeg', alt: 'Lucrare ușă PVC finalizată', title: 'Montaj uși PVC', focusClass: 'focus-top' },
+      { img: 'images/usi/usi-4.jpeg', alt: 'Detaliu lucrare ușă PVC', title: 'Finisaje uși PVC', focusClass: 'focus-top' }
     ],
     'usi-glisante': [
       { img: 'images/usi-glis3.jpeg', alt: 'Sistem glisant cu oglindă', title: 'Glisantă pentru terasă' },
@@ -306,10 +306,10 @@ function initProductSwitcher() {
       { img: 'images/usi-glis4.jpeg', alt: 'Glisantă pentru exterior', title: 'Glisantă pentru exterior' }
     ],
     'plase-tantari': [
-      { img: 'images/plase-tantari/plasa-tantari-1.jpeg', alt: 'Plasă de tantari', title: 'Plase de tantari' },
-      { img: 'images/plase-tantari/plasa-tantari-2.jpeg', alt: 'Plasă de tantari rulou', title: 'Sistem rulou' },
-      { img: 'images/plase-tantari/plasa-tantari-3.jpeg', alt: 'Plasă de tantari plisată', title: 'Sistem plisat' },
-      { img: 'images/plase-tantari/plasa-tantari-4.jpeg', alt: 'Plasă de tantari pe rulor', title: 'Plase pe rulor' }
+      { img: 'images/plase-tantari/plase-tantari-1.jpeg', alt: 'Plasă de tantari', title: 'Plase de tantari' },
+      { img: 'images/plase-tantari/plase-tantari-2.jpeg', alt: 'Plasă de tantari rulou', title: 'Sistem rulou' },
+      { img: 'images/plase-tantari/plase-tantari-3.jpeg', alt: 'Plasă de tantari plisată', title: 'Sistem plisat' },
+      { img: 'images/plase-tantari/plase-tantari-4.jpeg', alt: 'Plasă de tantari pe rulor', title: 'Plase pe rulor' }
     ]
   };
 
