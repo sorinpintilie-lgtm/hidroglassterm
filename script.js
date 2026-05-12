@@ -542,58 +542,30 @@ function loadPortfolioGallery() {
   if (!galleryGrid) return;
 
   const images = [
-    'images/ferestre/ferestre-22.jpg',
-    'images/ferestre/ferestre-1.jpeg',
-    'images/ferestre/ferestre-2.jpeg',
     'images/ferestre/ferestre-3.jpeg',
-    'images/ferestre/ferestre-4.jpeg',
-    'images/ferestre/ferestre-5.jpeg',
-    'images/ferestre/ferestre-6.jpeg',
-    'images/ferestre/ferestre-7.jpeg',
-    'images/ferestre/ferestre-8.jpeg',
-    'images/ferestre/ferestre-9.jpeg',
-    'images/ferestre/ferestre-10.jpeg',
-    'images/ferestre/ferestre-11.jpeg',
-    'images/ferestre/ferestre-12.jpeg',
-    'images/ferestre/ferestre-13.jpeg',
-    'images/ferestre/ferestre-14.jpeg',
-    'images/ferestre/ferestre-15.jpeg',
-    'images/ferestre/ferestre-16.jpeg',
-    'images/ferestre/ferestre-17.jpeg',
-    'images/ferestre/ferestre-18.jpeg',
-    'images/ferestre/ferestre-19.jpeg',
-    'images/ferestre/ferestre-20.jpeg',
-    'images/usi/usi-19.jpeg',
-    'images/usi/usi-20.jpeg',
-    'images/usi/usi-21.jpeg',
-    'images/usi/usi-22.jpeg',
-    'images/usi/usi-23.jpeg',
-    'images/usi/usi-24.jpeg',
-    'images/usi/usi-1.jpeg',
-    'images/usi/usi-2.jpeg',
+    'images/ferestre/ferestre-21.jpeg',
     'images/usi/usi-3.jpeg',
     'images/usi/usi-4.jpeg',
-    'images/usi/usi-5.jpeg',
-    'images/usi/usi-6.jpeg',
-    'images/usi/usi-7.jpeg',
-    'images/usi/usi-8.jpeg',
-    'images/usi/usi-9.jpeg',
-    'images/usi/usi-10.jpeg',
     'images/usi/usi-11.jpeg',
-    'images/usi/usi-12.jpeg',
-    'images/usi/usi-13.jpeg',
-    'images/usi/usi-14.jpeg',
-    'images/usi/usi-15.jpeg',
     'images/usi/usi-16.jpeg',
-    'images/usi/usi-17.jpeg',
-    'images/usi/usi-18.jpeg',
-    'images/plase-tantari/plase-tantari-1.jpeg',
-    'images/plase-tantari/plase-tantari-2.jpeg',
-    'images/plase-tantari/plase-tantari-3.jpeg',
-    'images/plase-tantari/plase-tantari-4.jpeg'
+    'images/usi-glis1.jpeg',
+    'images/usi glisante/usi-glis4d.jpeg'
   ];
 
-  galleryGrid.innerHTML = images.map(img => `<article class="gallery-item"><img src="${img}" alt="Lucrare tâmplărie PVC Constanța" /></article>`).join('');
+  galleryGrid.innerHTML = images.map(img => `<article class="gallery-item"><img src="${img}" alt="Lucrare tâmplărie PVC Constanța" loading="lazy" /></article>`).join('');
+
+  // Add error handling for missing images - remove entire card if image fails
+  const galleryItems = galleryGrid.querySelectorAll('.gallery-item img');
+  galleryItems.forEach(img => {
+    img.addEventListener('error', function() {
+      const item = this.closest('.gallery-item');
+      if (item) item.remove();
+      console.warn('Imagine lipsă:', this.src);
+    });
+    img.addEventListener('load', function() {
+      this.style.display = 'block';
+    });
+  });
 }
 
 function initSite() {
@@ -601,8 +573,8 @@ function initSite() {
   initReveal();
   initLeadForms();
   initProductSwitcher();
-  initSliders();
   loadPortfolioGallery();
+  initSliders();
   setHeaderState();
   initGalleryLightbox();
   initCategoryGalleryDots();
