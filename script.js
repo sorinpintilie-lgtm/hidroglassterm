@@ -365,6 +365,9 @@ function initSliders() {
 
   const galleryPlase = document.getElementById('gallery-dots-plase-tantari');
   if (galleryPlase) bindDots(galleryPlase.previousElementSibling, galleryPlase, '.category-masonry-item', 'category-gallery-dot', 'Imagine');
+
+  const galleryBalcon = document.getElementById('gallery-dots-balcon-salamder72md');
+  if (galleryBalcon) bindDots(galleryBalcon.previousElementSibling, galleryBalcon, '.category-masonry-item', 'category-gallery-dot', 'Imagine');
 }
 
 function initGalleryLightbox() {
@@ -520,6 +523,14 @@ function initCategoryGalleryDots() {
   bindDots(
     document.getElementById('gallery-plase-tantari'),
     document.getElementById('gallery-dots-plase-tantari'),
+    '.category-masonry-item',
+    'category-dot',
+    'Imagine'
+  );
+
+  bindDots(
+    document.getElementById('gallery-balcon-salamder72md'),
+    document.getElementById('gallery-dots-balcon-salamder72md'),
     '.category-masonry-item',
     'category-dot',
     'Imagine'
